@@ -45,4 +45,4 @@ class UsersList(ListAPIView):
 
         if user.is_authenticated:
             return user.data
-        return Response({'error': 'Anonymous User'}, status=400)
+        return Response({'error': 'Anonymous User'}, status=status.HTTP_400_BAD_REQUEST)
