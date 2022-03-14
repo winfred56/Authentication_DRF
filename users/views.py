@@ -2,10 +2,10 @@ from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import RegisterSerializer, UsersListSerializer
 from .models import UserManger
 from rest_framework.generics import ListAPIView
+from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your views here.
 
@@ -42,7 +42,6 @@ class UsersList(ListAPIView):
 
     def get_user_data(self, request):
         user = request.data
-
         if user.is_authenticated:
             return user.data
         return Response({'error': 'Anonymous User'}, status=status.HTTP_400_BAD_REQUEST)
