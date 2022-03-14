@@ -9,6 +9,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ['email', 'user_name', 'password', 'first_name', 'last_name']
         extra_kwargs = {'password': {'write_only': True}}
 
+# Overriding this function makes sure all passwords are hashed(encrypted) on the admin page and on the database
     def create(self, validated_data):
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)
