@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 
 
+
 # Create your models here.
 class CustomUserManager(BaseUserManager):
     def create_superuser(self, email, user_name, password, **other_fields):
@@ -32,6 +33,7 @@ class UserManger(AbstractBaseUser, PermissionsMixin):
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(auto_now_add=True)
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
